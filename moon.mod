@@ -9,13 +9,13 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "username/css-select"
+name = "logicore-code/css-select"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = ""
+repository = "https://github.com/logicore-code/css-select"
 
 license = "Apache-2.0"
 
