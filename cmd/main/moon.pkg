@@ -1,0 +1,5 @@
+// import {
+//   "username/css-select" @lib,
+// }
+
+pkgtype(kind: "executable")
