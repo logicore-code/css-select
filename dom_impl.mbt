@@ -1,25 +1,25 @@
 // SelectableNode implementation for DomNode.
 
-impl SelectableNode for DomNode with fn ty(self) {
+pub impl SelectableNode for DomNode with fn ty(self : DomNode) -> String {
   self.tag
 }
 
-impl SelectableNode for DomNode with fn get_attr(self, name : String) {
+pub impl SelectableNode for DomNode with fn get_attr(self : DomNode, name : String) -> String? {
   self.attrs.get(name)
 }
 
-impl SelectableNode for DomNode with fn parent(self) {
+pub impl SelectableNode for DomNode with fn parent(self : DomNode) -> DomNode? {
   self.parent_node
 }
 
-impl SelectableNode for DomNode with fn children(self) {
+pub impl SelectableNode for DomNode with fn children(self : DomNode) -> Array[DomNode] {
   self.child_nodes
 }
 
-impl SelectableNode for DomNode with fn sibling_index(self) {
+pub impl SelectableNode for DomNode with fn sibling_index(self : DomNode) -> Int {
   self.sibling_idx
 }
 
-impl SelectableNode for DomNode with fn type_sibling_index(self) {
+pub impl SelectableNode for DomNode with fn type_sibling_index(self : DomNode) -> Int {
   self.type_idx
 }
