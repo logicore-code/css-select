@@ -121,3 +121,31 @@ test "error selector returns false" {
   assert_true(!matches("div >", root))
   assert_true(!matches("", root))
 }
+
+test "attribute contains and prefix" {
+  let root = build_tree()
+  let a = root.child_at(2).child_at(0)
+  assert_true(matches("a[href^='/']", a))
+  assert_true(matches("a[href$='home']", a))
+  assert_true(matches("a[href*='hom']", a))
+}
+
+test "nth-child even and negative" {
+  let root = build_tree()
+  let li2 = root.child_at(1).child_at(1)
+  assert_true(matches("li:nth-child(even)", li2))
+  assert_true(!matches("li:nth-child(even)", root.child_at(1).child_at(0)))
+}
+
+test "general sibling" {
+  let root = build_tree()
+  let li3 = root.child_at(1).child_at(2)
+  assert_true(matches("li.item ~ li.item", li3))
+}
+
+test "root and empty pseudo" {
+  let root = build_tree()
+  assert_true(matches(":root", root))
+  let a = root.child_at(2).child_at(0)
+  assert_true(matches(":empty", a))
+}
