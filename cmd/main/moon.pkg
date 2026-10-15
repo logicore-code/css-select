@@ -1,5 +1,6 @@
-// import {
-//   "username/css-select" @lib,
-// }
+import {
+  "logicore-code/css-select" @lib,
+  "moonbitlang/core/env" @env,
+}
 
 pkgtype(kind: "executable")
