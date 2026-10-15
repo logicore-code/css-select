@@ -35,6 +35,22 @@ pub fn[T : SelectableNode] matches_list(node : T, list : SelectorList) -> Bool {
   false
 }
 
+/// Collect all nodes in the subtree rooted at `root` that match the selector list.
+pub fn[T : SelectableNode] query_all(root : T, list : SelectorList) -> Array[T] {
+  let out : Array[T] = []
+  query_walk(root, list, out)
+  out
+}
+
+fn[T : SelectableNode] query_walk(node : T, list : SelectorList, out : Array[T]) -> Unit {
+  if matches_list(node, list) {
+    out.push(node)
+  }
+  for c in node.children() {
+    query_walk(c, list, out)
+  }
+}
+
 /// Does `node` match this single complex selector?
 pub fn[T : SelectableNode] matches(node : T, complex : ComplexSelector) -> Bool {
   if !matches_compound(node, complex.subject) {
